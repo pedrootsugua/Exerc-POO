@@ -14,7 +14,7 @@ public class Consulta {
     private LocalDate dataConsulta;
     private LocalTime horarioConsulta;
     private String tipoConsulta;
-    
+
     //constructors
     public Consulta() {
         this.id = count++;
@@ -26,16 +26,16 @@ public class Consulta {
         this.tipoConsulta = tipoConsulta;
         this.id = count++;
     }
-    
-     // getters and setters
+
+    // getters and setters
     public int getId() {
         return id;
     }
-
+    
     public static int getCount() {
         return count;
     }
-
+    
     public LocalDate getDataConsulta() {
         return dataConsulta;
     }
@@ -59,7 +59,5 @@ public class Consulta {
     public void setTipoConsulta(String tipoConsulta) {
         this.tipoConsulta = tipoConsulta;
     }
-    
-    //criar metodo que cria uma consulta, recebe o paciente como parametro e vincula a consulta a ele
 
 }

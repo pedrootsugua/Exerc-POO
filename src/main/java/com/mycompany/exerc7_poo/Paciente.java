@@ -4,6 +4,8 @@ package com.mycompany.exerc7_poo;
  *
  * @author pedro
  */
+import com.mycompany.exerc7_poo.Consulta;
+
 public class Paciente {
 
     private int id;
@@ -23,7 +25,7 @@ public class Paciente {
         this.idade = idade;
         this.id = count++;
     }
-    
+
     // getters and setters
     public int getId() {
         return id;
@@ -56,14 +58,37 @@ public class Paciente {
     public void setConsultas(Consulta[] consultas) {
         this.consultas = consultas;
     }
-    
-     //criar metodo de agendar consulta que insere uma consulta no vetor Consultas
+
+    //criar metodo de agendar consulta que insere uma consulta no vetor Consultas
     public void agendarConsulta(Consulta consulta) {
-        if(countConsulta >= consultas.length) {
-            
+        if (countConsulta >= consultas.length) {
+            consultas = redimencionarVetor();
         }
         consultas[countConsulta++] = consulta;
     }
-    
 
+    private Consulta[] redimencionarVetor() {
+        Consulta[] novo = new Consulta[consultas.length + 1];
+
+        //transferir os dados para o novo vetor
+        System.arraycopy(consultas, 0, novo, 0, consultas.length);
+        return novo;
+    }
+
+    public void mostrar(Paciente paciente) {
+        System.out.println("--------------------------------------------------------");
+        System.out.println("*** ID paciente: " + paciente.getId());
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Nome: " + paciente.getNome());
+        System.out.println("Idade: " + paciente.getIdade());
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Consultas: ");
+        System.out.println("--------------------------------------------------------");
+        for (Consulta consulta : paciente.getConsultas()) {
+            System.out.println("ID consulta: " + consulta.getId());
+            System.out.println("Data: " + consulta.getDataConsulta());
+            System.out.println("Horario: " + consulta.getHorarioConsulta());
+            System.out.println("Tipo consulta: " + consulta.getTipoConsulta() + "\n");
+        }
+    }
 }
